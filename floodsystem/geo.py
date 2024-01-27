@@ -17,7 +17,7 @@ def stations_by_distance(stations, p):
       distance = haversine.haversine(p,station.coord)
       temp = (station.name, distance)
       point_to_station_dist.append(temp)
-   sorted_by_key(point_to_station_dist,1)
-   print(point_to_station_dist)
+   point_to_station_dist = sorted_by_key(point_to_station_dist,1)
+   return point_to_station_dist
 
     
