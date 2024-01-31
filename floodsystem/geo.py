@@ -31,4 +31,4 @@ def stations_within_radius(stations, centre, r):
          #print(distance)
          within_radius.append(station.name)
 
-   print(sorted(within_radius))
+   return sorted(within_radius)
