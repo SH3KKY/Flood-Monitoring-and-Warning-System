@@ -27,6 +27,9 @@ def test_stations_within_radius():
     test_radius = random.randint(0,100)
     """Testing whether the function correctly determines whether stations are within specified radii of an origin"""
     radius_result = stations_within_radius(all_stations,(0,0),test_radius)
-    for station in all_stations:
-        if station.name in radius_result:
-            assert haversine.haversine((0,0),station.coord) < test_radius
+    if test_radius == 0:
+        assert len(radius_result) == 0 
+    else:
+        for station in all_stations:
+            if station.name in radius_result:
+                assert haversine.haversine((0,0),station.coord) < test_radius
