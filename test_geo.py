@@ -40,4 +40,4 @@ def test_stations_within_radius():
                 assert haversine.haversine(origin,station.coord) < test_radius
     
 
-test_stations_within_radius()
+#test_stations_within_radius()
