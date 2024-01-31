@@ -35,8 +35,8 @@ def test_stations_within_radius():
         for station in all_stations:
             if station.name in radius_result:
                 print(haversine.haversine(origin,station.coord))
-                print(station.name)
-                print(test_radius)
+                #print(station.name)
+                #print(test_radius)
                 assert haversine.haversine(origin,station.coord) < test_radius
     
 
