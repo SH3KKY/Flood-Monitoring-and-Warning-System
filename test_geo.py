@@ -8,33 +8,63 @@ import haversine
 from decimal import Decimal, getcontext
 
 def test_stations_by_distance():
-    """Testing that the input coordinates is a tuple, the output is arranged in distance"""
-    #Generating random test coordinates
-    getcontext().prec = 15
-    test_coordinates = (Decimal(random.uniform(-90,90)),Decimal(random.uniform(-180,180)))
-    all_stations = build_station_list()
+    """
+    Testing that the outputs are the correct data type
+    and the output is arranged in ascending distance
+        
+    """
 
-    #run function
+    test_coordinates = (52.2053, 0.1218)
+    all_stations = build_station_list()
     distance_result = stations_by_distance(all_stations,test_coordinates)
 
-    #Testing results
+    #Testing data types
     assert isinstance(test_coordinates, tuple)
+    assert isinstance(distance_result, list)
+    for index in range(0,len(distance_result)-1):
+        assert isinstance(distance_result[index], tuple)
+        assert isinstance(distance_result[index][0],str)
+        assert isinstance(distance_result[index][1],float)
+
+    #Testing for specific value
+    assert distance_result[10][0] == "Lode"
+    assert distance_result [10][1] == 9.067126157017764
+
+    #Testing list is arranged in distance
     assert all(distance_result[i][1] <= distance_result[i + 1][1] for i in range(len(distance_result) - 1))
     assert distance_result[-1][1] == max(station[1] for station in distance_result)
 
+#test_stations_by_distance()
+
 def test_stations_within_radius():
-    """Testing whether the function correctly determines whether stations are within specified radii of an origin (being Cambridge Centre)"""
+    """
+
+    Testing whether the outputs are the correct data type 
+    and function correctly determines whether stations are 
+    within specified radii of an origin (being Cambridge Centre)
+
+    """
+    
     all_stations = build_station_list()
-    test_radius = random.randint(0,50)
+    test_radius = 15
     origin = (52.2053, 0.1218)
     radius_result = stations_within_radius(all_stations,origin,test_radius)
-    
+
+    #Testing data types
+    assert isinstance(radius_result, list)
+    for index in range(0,len(radius_result)-1):
+        assert isinstance(radius_result[index],str)
+
+    #Testing the number of stations within the specified test radius
+    assert len(radius_result) == 14
+
+    #Testing that the distance between the origin and station is less than the specified test radius
     if test_radius == 0:
         assert len(radius_result) == 0 
     else:
-        for station in all_stations:
-            if station.name in radius_result:
-                print(haversine.haversine(origin,station.coord))
+        for station in radius_result:
+            if station in all_stations:
+                #print(haversine.haversine(origin,station.coord))
                 #print(station.name)
                 #print(test_radius)
                 assert haversine.haversine(origin,station.coord) < test_radius
