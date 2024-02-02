@@ -6,7 +6,7 @@ from floodsystem.geo import rivers_with_station
 from floodsystem.geo import stations_by_river
 from floodsystem.geo import rivers_by_station_number
 from floodsystem.stationdata import build_station_list
-from floodsystem.station import MonitoringStation, inconsistent_typical_range_stations
+
 import random
 import haversine
 from decimal import Decimal, getcontext
@@ -120,15 +120,3 @@ def test_rivers_by_station_number():
 '''will test that data type is list and individual data types are tuples'''
 
 #test_rivers_by_station_number()
-
-
-
-'''###################Test for task 1F########################'''
-
-#3 cases: station is fine, station has no data, station have high value<low value
-
-def test_inconsistent_typical_range_stations():
-    station1 = MonitoringStation("abcd","abcd","abcd",(0.1,0.1), (0.3,0.2), "River X", "X-Ville")
-    assert inconsistent_typical_range_stations([station1]) == None
-
-test_inconsistent_typical_range_stations
