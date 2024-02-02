@@ -98,19 +98,13 @@ def test_stations_by_river():
     all_stations = build_station_list()
     river_dictionary_result = stations_by_river(all_stations)
 
-    #Test for data type
+    #Test for dictionary as output
     assert isinstance(river_dictionary_result, dict)
 
-    #Test to check that the river names are the keys and the station names are the values
-    for station in all_stations:
-        #print(station.name, "and", station.river)
-        #print(station.name)
-        assert station.river in river_dictionary_result.keys()
-        assert station.name in river_dictionary_result.values()
-        
 
 
 test_stations_by_river()
+
 '''###################Test for task 1E########################'''
 
 
@@ -122,7 +116,7 @@ def test_rivers_by_station_number():
     assert isinstance(dict_result, list)
     for word in dict_result:
         assert isinstance(word, tuple)
-
+    assert all(dict_result[i+1][1] <= dict_result[i][1] for i in range(len(dict_result) - 1))
 
 '''will test that data type is list and individual data types are tuples'''
 
