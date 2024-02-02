@@ -55,13 +55,13 @@ def all_river_func(stations):
 
 
 def stations_by_river(stations):
-   '''this function forms a dictionary of the key: river name to the value: station name'''
+   '''this function forms a dictionary of the key: river name to the value: station names'''
    
    rivers_to_stations = {}
 
    all_rivers = all_river_func(stations) #this calls the previous function and stores the set with all the river names
 
-   stations_on_river = [] #for each river we will update this and store the stations on that river, add that to the dictionary as a value, the clear the list
+   stations_on_river = [] #for each river we will update this and store the stations on that river, add that to the dictionary as a value, then clear the list
 
    for stream in all_rivers:
       for station in stations:
@@ -105,10 +105,30 @@ def rivers_by_station_number(stations, N):
 
    all_the_numbers_set = sorted(set(all_the_numbers))
 
+
+   # This next bit of code just checks that N isn't too large for the list that it will be used to iterate through
+
+   if N>len(all_the_numbers_set):
+      raise Exception('N should be lower than the number of different (numbers of stations per river)')
+
    #return(all_the_numbers_set)
 
    '''This final section uses N and all_the_numbers_set to return the rivers with the N top monitoring stations'''
 
+   output_number_list = []
+
+   all_ouput_stations = []
+
    for i in range(0,N):
       station_number_value = all_the_numbers_set[len(all_the_numbers_set)-i-1]
-      print(station_number_value)
+      output_number_list.append(station_number_value)
+
+   #return(output_number_list)
+
+
+   for j in range(len(output_number_list)):
+      for river in river_to_number:
+         if river_to_number[river] == output_number_list[j]:
+            all_ouput_stations.append((river,output_number_list[j]))
+
+   return all_ouput_stations

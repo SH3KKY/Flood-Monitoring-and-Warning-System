@@ -8,6 +8,7 @@ stations = build_station_list()
 
 rivers_dictionary = (stations_by_river(stations))
 
+#print(rivers_dictionary)
 
 output_stations = []
 for i in range(len(river_keys)):
