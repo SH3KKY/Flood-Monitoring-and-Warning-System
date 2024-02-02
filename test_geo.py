@@ -2,6 +2,8 @@
 
 from floodsystem.geo import stations_by_distance
 from floodsystem.geo import stations_within_radius
+
+from floodsystem.geo import rivers_by_station_number
 from floodsystem.stationdata import build_station_list
 import random
 import haversine
@@ -71,3 +73,21 @@ def test_stations_within_radius():
     
 
 #test_stations_within_radius()
+                
+
+'''###################Test for task 1E########################'''
+
+
+
+def test_rivers_by_station_number():
+    all_stations = build_station_list()
+    N = random.randint(0,21)
+    dict_result = rivers_by_station_number(all_stations,N)
+    assert isinstance(dict_result, list)
+    for word in dict_result:
+        assert isinstance(word, tuple)
+
+
+'''will test that data type is list and individual data types are tuples'''
+
+test_rivers_by_station_number()
