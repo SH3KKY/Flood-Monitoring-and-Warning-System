@@ -40,7 +40,7 @@ def stations_within_radius(stations, centre, r):
    '''################Task 1D################'''
 
 
-def all_river_func(stations):
+def rivers_with_station(stations):
 
    '''this function forms a set of all the river names to be used in stations_by_river'''
 
@@ -59,7 +59,7 @@ def stations_by_river(stations):
    
    rivers_to_stations = {}
 
-   all_rivers = all_river_func(stations) #this calls the previous function and stores the set with all the river names
+   all_rivers = rivers_with_station(stations) #this calls the previous function and stores the set with all the river names
 
    stations_on_river = [] #for each river we will update this and store the stations on that river, add that to the dictionary as a value, then clear the list
 
