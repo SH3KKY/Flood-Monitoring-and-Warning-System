@@ -34,11 +34,13 @@ station2 = MonitoringStation("efgh","efgh","efgh",(0.2,0.2),None,"River Y", "Y-v
 station3 = MonitoringStation("ijkl","ijkl","ijkl",(0.3,0.3),(0.2,0.3),"River Z", "Z-ville" )
 
 def test_typical_range_consistent():
+    """Test whether consistent data is detected for known test cases"""
     assert station1.typical_range_consistent() == False
     assert station2.typical_range_consistent() == False
     assert station3.typical_range_consistent() == True
 
 def test_inconsistent_typical_range_stations():
+    """Test whether inconsistent data is produced for known test cases"""
     assert len(inconsistent_typical_range_stations([station1])) > 0 
     assert len(inconsistent_typical_range_stations([station2])) > 0
     assert len(inconsistent_typical_range_stations([station3])) == 0

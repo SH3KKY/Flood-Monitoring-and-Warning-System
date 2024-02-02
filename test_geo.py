@@ -82,6 +82,11 @@ def test_stations_within_radius():
 '''###################Test for task 1D########################'''     
 
 def test_rivers_with_station():
+    """
+    This function tests the data types of the container produced
+    and the values stored in it
+
+    """
     all_stations = build_station_list()
     river_set_result = rivers_with_station(all_stations)
     
@@ -95,6 +100,10 @@ def test_rivers_with_station():
 #test_rivers_with_station()
 
 def test_stations_by_river():
+    """
+    This function tests that a dictionary is created
+    
+    """
     all_stations = build_station_list()
     river_dictionary_result = stations_by_river(all_stations)
 
@@ -106,7 +115,12 @@ def test_stations_by_river():
 test_stations_by_river()
 '''###################Test for task 1E########################'''
 
+"""
+This functions tests that a list is princted,
+that each item in the list is a tuple
+and the list is arranged in descending order
 
+"""
 
 def test_rivers_by_station_number():
     all_stations = build_station_list()
@@ -117,6 +131,6 @@ def test_rivers_by_station_number():
         assert isinstance(word, tuple)
     assert all(dict_result[i+1][1] <= dict_result[i][1] for i in range(len(dict_result) - 1))
 
-'''will test that data type is list and individual data types are tuples'''
+
 
 #test_rivers_by_station_number()
