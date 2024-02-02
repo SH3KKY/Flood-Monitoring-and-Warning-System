@@ -2,12 +2,15 @@
 
 from floodsystem.geo import stations_by_distance
 from floodsystem.geo import stations_within_radius
-
+from floodsystem.geo import rivers_with_station
+from floodsystem.geo import stations_by_river
 from floodsystem.geo import rivers_by_station_number
 from floodsystem.stationdata import build_station_list
 import random
 import haversine
 from decimal import Decimal, getcontext
+
+'''###################Test for task 1B########################'''
 
 def test_stations_by_distance():
     """
@@ -37,6 +40,7 @@ def test_stations_by_distance():
     assert distance_result[-1][1] == max(station[1] for station in distance_result)
 
 #test_stations_by_distance()
+'''###################Test for task 1C########################'''
 
 def test_stations_within_radius():
     """
@@ -73,8 +77,39 @@ def test_stations_within_radius():
     
 
 #test_stations_within_radius()
-                
 
+'''###################Test for task 1D########################'''     
+
+def test_rivers_with_station():
+    all_stations = build_station_list()
+    river_set_result = rivers_with_station(all_stations)
+    
+    #Test for data types
+    assert isinstance(river_set_result, set)
+    for index in range(len(river_set_result)):
+        assert isinstance((list(river_set_result))[index],str)
+    
+
+
+#test_rivers_with_station()
+
+def test_stations_by_river():
+    all_stations = build_station_list()
+    river_dictionary_result = stations_by_river(all_stations)
+
+    #Test for data type
+    assert isinstance(river_dictionary_result, dict)
+
+    #Test to check that the river names are the keys and the station names are the values
+    for station in all_stations:
+        #print(station.name, "and", station.river)
+        #print(station.name)
+        assert station.river in river_dictionary_result.keys()
+        assert station.name in river_dictionary_result.values()
+        
+
+
+test_stations_by_river()
 '''###################Test for task 1E########################'''
 
 
@@ -90,4 +125,4 @@ def test_rivers_by_station_number():
 
 '''will test that data type is list and individual data types are tuples'''
 
-test_rivers_by_station_number()
+#test_rivers_by_station_number()
