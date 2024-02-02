@@ -110,7 +110,7 @@ def test_stations_by_river():
         
 
 
-test_stations_by_river()
+#test_stations_by_river()
 '''###################Test for task 1E########################'''
 
 
@@ -126,4 +126,16 @@ def test_rivers_by_station_number():
 
 '''will test that data type is list and individual data types are tuples'''
 
-test_rivers_by_station_number()
+#test_rivers_by_station_number()
+
+
+
+'''###################Test for task 1F########################'''
+
+#3 cases: station is fine, station has no data, station have high value<low value
+
+def test_inconsistent_typical_range_stations():
+    station1 = MonitoringStation("abcd","abcd","abcd",(0.1,0.1), (0.3,0.2), "River X", "X-Ville")
+    assert inconsistent_typical_range_stations([station1]) == None
+
+test_inconsistent_typical_range_stations
