@@ -10,7 +10,7 @@ update_water_levels(stations)
 
 days_back = 10
 
-N = 1
+N = 5
 
 output = stations_highest_rel_level(stations, N)
 
