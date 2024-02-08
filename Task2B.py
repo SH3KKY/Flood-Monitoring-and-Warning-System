@@ -12,4 +12,4 @@ update_water_levels(stations)
 list_of_tuples = stations_level_over_threshold(stations, tolerance)
 
 for i in range(0, len(list_of_tuples)):
-    print(list_of_tuples[i][0], list_of_tuples[i][1])
+    print(list_of_tuples[i][0].name, list_of_tuples[i][1])

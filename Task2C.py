@@ -12,4 +12,4 @@ update_water_levels(stations)
 output = stations_highest_rel_level(stations, N)
 
 for i in range(0, len(output)):
-    print(output[i][0], output[i][1])
+    print(output[i][0].name, output[i][1])
