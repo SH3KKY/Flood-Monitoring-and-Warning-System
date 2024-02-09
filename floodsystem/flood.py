@@ -8,7 +8,7 @@ def stations_level_over_threshold(stations, tol):
             if station.relative_water_level() > tol:
                 out_of_tol.append((station,station.relative_water_level()))
         
-    out_of_tol_sorted = sorted(out_of_tol, key = lambda x: x[1])
+    out_of_tol_sorted = sorted(out_of_tol, key = lambda x: x[1], reverse=True)
     return out_of_tol_sorted
 
 
