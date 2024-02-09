@@ -34,4 +34,4 @@ def test_stations_level_over_threshold():
     assert test_output[0] == (stations[0], 11) #check first tuple
     assert test_output[-1] == (stations[4],6.5) #check last tuple
     assert all(test_output[i][1] >= test_output[i + 1][1] for i in range(len(test_output) - 1)) #checks if in descending order
-    assert len(test_output) == 2 #checks length
+    assert len(test_output) == 3 #checks length
