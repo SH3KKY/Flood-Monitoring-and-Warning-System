@@ -26,4 +26,4 @@ def stations_highest_rel_level(stations, N):
     
     #print(return_list)
 
-    return return_list
+    return sorted(return_list, key = lambda x: x[1], reverse=True)
