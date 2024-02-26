@@ -25,3 +25,5 @@ def plot_water_levels(station, dates, levels):
 
 
 # Unfortunately github codespaces doesn't show matplotlib figures so i can't really do the rest of this... lets hope it works
+    
+def plot_water_level_with_fit(station, dates, levels, p):
