@@ -4,16 +4,11 @@ import numpy as np
 def polyfit(dates, levels, p):
 
     x = matplotlib.dates.date2num(dates)
-    d0 = 0
-    date_list = []
-
-    #shifting each value
-    for i in range (len(x)):
-        shifted_value = x[i] - d0
-        date_list.append(shifted_value)
-
     #1d array shifted
-    polynomial_shifted = np.polyfit(date_list,levels,p)
+    polynomial_shifted = np.polyfit(x-x[0],levels,p)
     poly = np.poly1d(polynomial_shifted)
-
+    #print(len(polynomial_shifted))
+    #print(len(poly))
+    d0 = x[0]
+    #print(poly)
     return poly, d0
