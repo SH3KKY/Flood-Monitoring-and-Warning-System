@@ -21,7 +21,7 @@ def stations_highest_rel_level(stations, N):
     output.reverse()
     #print(output)
     while i < N:
-        return_list.append(output[i])
+        return_list.append(output[-i-1])
         i+=1
     
     #print(return_list)
