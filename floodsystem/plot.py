@@ -9,6 +9,9 @@ import matplotlib.dates as mdates
 
 
 def plot_water_levels(station, dates, levels):
+    """
+    This function that displays a plot of the water level data against time for a station
+    """
     typical_low = station.typical_range[0]
     typical_high = station.typical_range[1]
 
@@ -23,11 +26,13 @@ def plot_water_levels(station, dates, levels):
 
     # Display plot
     plt.tight_layout()  # This makes sure plot does not cut off date labels
-
     plt.show()
 
     
 def plot_water_level_with_fit(station, dates, levels, p):
+    """
+    This function plots the water level data and the best-fit polynomial. It also plots the typical low range and typical high range.
+    """
     y0 = levels
     y1 = np.polyfit(mdates.date2num(dates), y0, p)
     polynomial_fit = np.poly1d(y1)
