@@ -1,4 +1,4 @@
-import matplotlib
+import matplotlib.dates
 import numpy as np
 
 def polyfit(dates, levels, p):
@@ -7,8 +7,6 @@ def polyfit(dates, levels, p):
     """
     x = matplotlib.dates.date2num(dates)
     polynomial_shifted = np.polyfit(x-x[0],levels,p)
-    # Some stations have corrupt data which affect data structure conversion in polyfit
-    return None, None
     #1d array shifted
     poly = np.poly1d(polynomial_shifted)
     #print(len(polynomial_shifted))
