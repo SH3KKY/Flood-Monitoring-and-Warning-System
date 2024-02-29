@@ -35,52 +35,56 @@ def risk_assessment(station):
         invalid = True
 
     if not invalid:
-        #average = weighted_average(one_day_levels, list(range(len(one_day_levels))))
         latest = (station.latest_level - station.typical_range[0]) / (station.typical_range[1] - station.typical_range[0])
-        # Assessing the immediate riskay
-        if latest >= 1:
-            severe_risk.append(station.town)
-        elif latest >= 0.7:
-            high_risk.append(station.town)
-        elif latest>= 0.4:
-            moderate_risk.append(station.town)
-        elif latest >= 0:
-            low_risk.append(station.town)
+        # Assessing the immediate risk
+        if len(one_day_dates) != 0:
+            if latest >= 1:
+                severe_risk.append(station.town)
+            elif latest >= 0.7:
+                high_risk.append(station.town)
+            elif latest>= 0.4:
+                moderate_risk.append(station.town)
+            elif latest >= 0:
+                low_risk.append(station.town)
         else:
             unknown.append(station.town)
             invalid = True
-
+        """
         if not invalid:
+            #print(one_day_dates)
             # Assess whether the water level is going to rise or fall
             poly, d0 = polyfit(one_day_dates, one_day_levels, 3)
-            future = poly(max(date2num(one_day_dates) - d0))
-            future_level = (future - low) / (high - low)
-            if future_level > station.latest_level:
-                rising.append(station.town)
+            if poly ==  None and d0 == None:
+             unknown.append(station.town)
             else:
-                falling.append(station.town)
-
+                future = poly(max(date2num(one_day_dates) - d0))
+                future_level = (future - low) / (high - low)
+                if future_level > station.latest_level:
+                    rising.append(station.town)
+                else:
+                    falling.append(station.town)
+        """
 
 for station in stations:
     risk_assessment(station)
     risk = None
     trend = None
-
+    #print(station.town)
     if station.town in severe_risk:
         risk = "\033[91mVery High Risk\033[0m"  #Red 
     elif station.town in high_risk:
-        risk = "\033[93mHigh Risk\033[0m"  # ellow 
+        risk = "\033[93mHigh Risk\033[0m"  # yellow 
     elif station.town in moderate_risk:
         risk = "\033[94mModerate Risk\033[0m"  #Blue 
     elif station.town in low_risk:
         risk = "\033[92mLow Risk\033[0m"  #Green 
-
+    """
     if station.town in rising:
         trend = "\033[91mRising\033[0m"  #Red 
     elif station.town in falling:
         trend = "\033[92mFalling\033[0m"  #Green 
-
-    if risk is not None and trend is not None:
-        print(f"{station.town} is currently at {risk} and the water level is {trend}.")
+    """
+    if risk is not None:
+        print(f"{station.town} is currently at {risk}.")
     else:
         print(f"No valid data available for {station.town}.")
