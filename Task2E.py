@@ -18,7 +18,7 @@ for item in output:
     levels, dates = fetch_measure_levels(
         item[0].measure_id, dt=datetime.timedelta(days=days_back))
     #print(levels,dates)
-    print(len(dates))
-    print(len(levels))
+    #print(len(dates))
+    #print(len(levels))
     plot_water_levels(item[0], dates, levels)
 
