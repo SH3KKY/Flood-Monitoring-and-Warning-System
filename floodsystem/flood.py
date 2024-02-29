@@ -16,7 +16,7 @@ def stations_highest_rel_level(stations, N):
 
     return_list = []
 
-    output = stations_level_over_threshold(stations, 0)
+    output = stations_level_over_threshold(stations, 0) # As before (in Task2C) we will only be considering stations with relative water levels over 0
     i = 0
     output.reverse()
     #print(output)

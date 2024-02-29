@@ -65,6 +65,7 @@ def risk_assessment(station):
                     falling.append(station.town)
         """
 
+#Assigns risk level to station using risk_assessment()
 for station in stations:
     risk_assessment(station)
     risk = None

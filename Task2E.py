@@ -15,8 +15,8 @@ N = 5
 output = stations_highest_rel_level(stations, N)
 
 for item in output:
-    levels, dates = fetch_measure_levels(
-        item[0].measure_id, dt=datetime.timedelta(days=days_back))
+    levels, dates = fetch_measure_levels(item[0].measure_id, dt=datetime.timedelta(days=days_back))
+    
     #print(levels,dates)
     #print(len(dates))
     #print(len(levels))
