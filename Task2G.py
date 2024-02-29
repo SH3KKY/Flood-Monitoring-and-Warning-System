@@ -38,11 +38,11 @@ def risk_assessment(station):
         latest = (station.latest_level - station.typical_range[0]) / (station.typical_range[1] - station.typical_range[0])
         # Assessing the immediate risk
         if len(one_day_dates) != 0:
-            if latest >= 1:
+            if latest >= 1.5:
                 severe_risk.append(station.town)
-            elif latest >= 0.7:
+            elif latest >= 1.2:
                 high_risk.append(station.town)
-            elif latest>= 0.4:
+            elif latest>= 0.8:
                 moderate_risk.append(station.town)
             elif latest >= 0:
                 low_risk.append(station.town)
