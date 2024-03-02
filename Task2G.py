@@ -49,7 +49,7 @@ def risk_assessment(station):
         else:
             unknown.append(station.town)
             invalid = True
-        """
+        
         if not invalid:
             #print(one_day_dates)
             # Assess whether the water level is going to rise or fall
@@ -63,7 +63,7 @@ def risk_assessment(station):
                     rising.append(station.town)
                 else:
                     falling.append(station.town)
-        """
+        
 
 for station in stations:
     risk_assessment(station)
@@ -78,13 +78,13 @@ for station in stations:
         risk = "\033[94mModerate Risk\033[0m"  #Blue 
     elif station.town in low_risk:
         risk = "\033[92mLow Risk\033[0m"  #Green 
-    """
+    
     if station.town in rising:
         trend = "\033[91mRising\033[0m"  #Red 
     elif station.town in falling:
         trend = "\033[92mFalling\033[0m"  #Green 
-    """
+    
     if risk is not None:
-        print(f"{station.town} is currently at {risk}.")
+        print(f"{station.town} is currently at {risk} and the water level is {trend}.")
     else:
         print(f"No valid data available for {station.town}.")
